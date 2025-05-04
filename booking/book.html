@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Appointment Scheduler</title>
+    <link rel="stylesheet" href="book.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="appointmentForm" class="card">
+        <div class="card-header">
+          <h2>Book Your Appointment</h2>
+        </div>
+        <div class="card-content">
+          <form id="bookingForm" action="store_appointment.php" method="POST">
+            <div class="form-group">
+              <label for="username">Your Name</label>
+              <input type="text" id="username" name="username" required placeholder="Enter your full name" />
+            </div>
+
+            <div class="form-group">
+              <label for="appointmentDate">Appointment Date</label>
+              <input type="date" id="appointmentDate" name="appointmentDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="doctor">Select Doctor</label>
+              <select id="doctor" name="doctor" required>
+                <option value="">Choose your doctor</option>
+                <option value="Dr. John Pork">Dr. John Pork - General Practice</option>
+                <option value="Dr. Moo Deng">Dr. Moo Deng - Neurology</option>
+                <option value="Dr. Priya Patel">Dr. Priya Patel - Pediatrics</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="lvl">Emergency level</label>
+              <input type="range" id="lvl" name="lvl" min="0" max="5">
+            </div>
+
+            <div class="form-group">
+              <label for="symptoms">Symptoms</label>
+              <textarea id="symptoms" name="symptoms" required placeholder="Please describe your symptoms..." rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Book Appointment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Set today's date as min for appointmentDate
+      document.addEventListener('DOMContentLoaded', () => {
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("appointmentDate").min = today;
+      });
+    </script>
+  </body>
+</html>
